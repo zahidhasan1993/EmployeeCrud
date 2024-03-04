@@ -16,6 +16,8 @@ namespace EmployeeApi.Controllers
             _employeeDbContext = employeeDbContext;
         }
 
+        // Get All Data
+
         [HttpGet]
         public async Task<IActionResult> GetAllEmpolyee()
         {
@@ -26,6 +28,9 @@ namespace EmployeeApi.Controllers
 
         }
 
+
+        // Add new data 
+
         [HttpPost]
 
         public async Task<IActionResult> AddEmployee ([FromBody] Employee employee)
@@ -35,6 +40,8 @@ namespace EmployeeApi.Controllers
 
             return Ok(employee);
         }
+
+        // Get single data
 
         [HttpGet]
         [Route("{id}")]
@@ -49,6 +56,8 @@ namespace EmployeeApi.Controllers
 
             return Ok(employee);
         }
+
+        // Update single data
 
         [HttpPut]
         [Route("{id}")]
@@ -71,6 +80,9 @@ namespace EmployeeApi.Controllers
         [HttpDelete]
         [Route("{id}")]
         
+
+        // Delete single data
+
         public async Task<IActionResult> DeleteEmployee([FromRoute] int id)
         {
             var employee = await _employeeDbContext.Employees.FindAsync(id);
